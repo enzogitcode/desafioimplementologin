@@ -17,8 +17,9 @@ app.use(cookieParser())
 import session from 'express-session';
 import FileStore from 'session-file-store';
 const fileStore = new FileStore(session)
-//usando mongoStorage
+
 import MongoStore from 'connect-mongo';
+
 app.get(("/"), (req, res) => {
     res.send("Desafío Login Backend")
 })
