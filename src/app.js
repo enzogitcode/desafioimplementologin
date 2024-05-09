@@ -12,13 +12,23 @@ app.set('views', './src/views');
 
 
 //cookie parser & session
+import session from 'express-session';
 import cookieParser from 'cookie-parser';
 app.use(cookieParser())
-import session from 'express-session';
-import FileStore from 'session-file-store';
-const fileStore = new FileStore(session)
-
 import MongoStore from 'connect-mongo';
+app.use(session({
+secret: "secretCoder",
+resave: true,
+saveUninitialized: true,
+store: MongoStore.create({
+    mongoUrl: "mongodb+srv://coder:codercoder1@cluster0.j9ubv2z.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0", ttl: 100
+})
+}))
+
+//Rutas
+import viewsRouter from './routes/views.router.js'
+app.use("/", viewsRouter)
+
 
 app.get(("/"), (req, res) => {
     res.send("Desafío Login Backend")
@@ -28,4 +38,5 @@ app.get("/setcookie", (req, res) => {
 
 })
 
+//Listen
 app.listen(PUERTO, () => { console.log(`Escuchando el puerto ${PUERTO}`) })
