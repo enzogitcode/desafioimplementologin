@@ -3,7 +3,7 @@ const router= express.Router();
 import UserModel from "../models/users.model.js"
 
 router.post("/", async (req, res)=> {
-    const {first_name, _last_name, email, password, age}= req.body
+    const {first_name, last_name, email, password, age}= req.body
     try {
         const existUser= await UserModel.findOne({email})
         if (existUser) {

@@ -20,3 +20,17 @@ h1 {
 }
 
 
+
+#registerContainer {
+    border-radius: 10px;
+    padding: 4%;
+    margin: 0 10%;
+    background-color: lightsalmon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
