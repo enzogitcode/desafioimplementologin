@@ -1,6 +1,8 @@
 import express from 'express';
 const app = express();
 const PUERTO = 8080;
+import "./database.js"
+import usersRouter from "./routes/user.router.js"
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/public'))
@@ -28,7 +30,7 @@ store: MongoStore.create({
 //Rutas
 import viewsRouter from './routes/views.router.js'
 app.use("/", viewsRouter)
-
+app.use("/api/users", usersRouter)
 
 app.get(("/"), (req, res) => {
     res.send("Desafío Login Backend")
