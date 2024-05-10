@@ -34,6 +34,7 @@ app.use("/", viewsRouter)
 app.use("/api/users", usersRouter)
 app.use ("/api/sessions", sessionsRouter)
 
+//cookies
 app.get(("/"), (req, res) => {
     res.send("Desafío Login Backend")
 })
