@@ -16,7 +16,7 @@ router.post("/login", async (req, res) => {
                 res.redirect("/profile")
             }
             else {
-                res.status(401).send("Contraseña no válida")
+                res.status(401).send("La contraseña no válida")
             }
         }
         else {
