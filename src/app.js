@@ -2,8 +2,6 @@ import express from 'express';
 const app = express();
 const PUERTO = 8080;
 import "./database.js"
-import usersRouter from "./routes/user.router.js"
-import sessionsRouter from "./routes/session.router.js"
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/public'))
@@ -20,20 +18,22 @@ import cookieParser from 'cookie-parser';
 app.use(cookieParser())
 import MongoStore from 'connect-mongo';
 app.use(session({
-secret: "secretCoder",
-resave: true,
-saveUninitialized: true,
-store: MongoStore.create({
-    mongoUrl: "mongodb+srv://coder:codercoder1@cluster0.j9ubv2z.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0", ttl: 100
-})
+    secret: "secretCoder",
+    resave: true,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: "mongodb+srv://coder:codercoder1@cluster0.j9ubv2z.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0", ttl: 100
+    })
 }))
 
 //Rutas
+import usersRouter from "./routes/user.router.js"
+import sessionsRouter from "./routes/session.router.js"
 import viewsRouter from './routes/views.router.js'
 import productRouter from './routes/products.router.js'
 import cartRouter from './routes/carts.router.js'
 app.use("/", viewsRouter)
-app.use ("/api/products", productRouter)
+app.use ("/", productRouter)
 app.use ("/api/carts", cartRouter)
 app.use("/api/users", usersRouter)
 app.use ("/api/sessions", sessionsRouter)

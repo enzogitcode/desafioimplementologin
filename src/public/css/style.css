@@ -13,12 +13,6 @@ h1 {
     display: flex;
 }
 
-#formLoginContainer {
-    border-radius: 10px;
-    width: 50vw;
-    padding: 4%;
-    background-color: lightsalmon;
-}
 
 #registerContainer {
     border-radius: 10px;
@@ -26,8 +20,15 @@ h1 {
     margin: 0 10%;
     background-color: lightsalmon;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#formLoginContainer {
+    border-radius: 10px;
+    width: 50vw;
+    padding: 4%;
+    background-color: lightsalmon;
 }
 
 .cardContainer {
