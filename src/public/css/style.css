@@ -1,3 +1,4 @@
+
 h1 {
     margin: 5%;
 }
@@ -19,8 +20,6 @@ h1 {
     background-color: lightsalmon;
 }
 
-
-
 #registerContainer {
     border-radius: 10px;
     padding: 4%;
@@ -31,6 +30,16 @@ h1 {
     align-items: center;
 }
 
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+.divPaginate {
+    font-size: 2rem;
+}
 
 
 

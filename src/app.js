@@ -30,8 +30,8 @@ store: MongoStore.create({
 
 //Rutas
 import viewsRouter from './routes/views.router.js'
-import productRouter from './routes/product.router.js'
-import cartRouter from './routes/cart.router.js'
+import productRouter from './routes/products.router.js'
+import cartRouter from './routes/carts.router.js'
 app.use("/", viewsRouter)
 app.use ("/api/products", productRouter)
 app.use ("/api/carts", cartRouter)

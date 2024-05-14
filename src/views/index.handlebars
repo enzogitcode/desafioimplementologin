@@ -1,0 +1,17 @@
+<h1 class="text-center">Island</h1>
+<h2 class="text-center">Lista de productos</h2>
+
+<div class="cardContainer container ">
+    {{>card}}
+</div>
+
+<div class="divPaginate text-wrap">
+    {{#if hasPrevPage}}
+    <a href="/products?page={{prevLink}}"> Anterior </a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+    <a href="{{nextLink}}"> Siguiente </a>
+    {{/if}}
+    <p>Pagina {{currentPage}} de {{totalPages}} </p>
+</div>

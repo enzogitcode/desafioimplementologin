@@ -1,0 +1,18 @@
+{{#each products}}
+<div class="card" style="width: 18rem;">
+    <img src="{{img}}" class="card-img-top" alt="{{title}}">
+    <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <h6>Descripción del producto:</h6>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text">$ {{price}}</p>
+        <p class="card-text">Stock: {{stock}}</p>
+        <p class="card-text">Categoría: {{category}}</p>
+        <p class="card-text">Código: {{code}}</p>
+        <div>{{thumbnails}}</div>
+        <a class="btn btn-primary">Agregar al carrito</a>
+    </div>
+</div>
+
+{{/each}}
+
