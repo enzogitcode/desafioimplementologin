@@ -19,6 +19,10 @@ const schema= new mongoose.Schema({
     age: {
         type: Number,
         required: true
+    },
+    password: {
+        required: true,
+        type: String
     }
 })
 

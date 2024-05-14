@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router();
 
-router.get("/login", (req, res) => {
+router.get("/", (req, res) => {
     res.render("login");
 })
 
