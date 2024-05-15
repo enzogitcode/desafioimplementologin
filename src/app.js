@@ -34,7 +34,7 @@ import productRouter from './routes/products.router.js'
 import cartRouter from './routes/carts.router.js'
 app.use("/", viewsRouter)
 app.use ("/", productRouter)
-app.use ("/api/carts", cartRouter)
+app.use ("/", cartRouter)
 app.use("/api/users", usersRouter)
 app.use ("/api/sessions", sessionsRouter)
 
