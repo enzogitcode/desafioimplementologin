@@ -21,6 +21,7 @@ router.post("/", async (req, res)=> {
             first_name: newUser.first_name}
 
     res.status(200).send("Usuario creado con ÉXITO")
+    res.render ('index')
         
     } catch (error) {
          res.status(500).send("Error al crear el usuario")

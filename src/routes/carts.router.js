@@ -9,7 +9,8 @@ const cartManager = new CartManager()
 //Visualizar todos los carritos existentes //Funciona
 cartRouter.get("/carts/", async (req, res) => {
     const carts = await CartModel.find().lean();
-    res.render("cartsContainer", { products: carts })
+    res.render("cartsContainer", { carts: carts })
+    console.log(carts);
 })
 //Visualizar un solo carrito
 cartRouter.get("/carts/:cid", async (req, res) => {
