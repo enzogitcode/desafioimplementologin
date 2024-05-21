@@ -1,0 +1,17 @@
+Hola, como va? 
+
+
+
+Estuve viendo el desafio y esta bien encarado. El usuario se crea correctamente, pero la password no se guarda porque el modelo de user no contiene el campo. Tambien podes utilizar el bcript para encriptarla si queres pero no es obligatorio si no me equivoco. 
+
+
+
+Por otro lado fijate que el resto del proyecto tiene que estar integrado, una vez hecho el login debe redirigir a los products. Todos los requerimientos estan en la diapo de la clase 19 y en el word con lo testeable. 
+
+
+
+Modificate eso cuando puedas que va bien, y avisame asi lo termino de corregir. 
+
+
+
+Saludos!! 

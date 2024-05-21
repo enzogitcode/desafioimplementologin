@@ -1,7 +1,7 @@
 import express from 'express'
 const router= express.Router();
 import UserModel from "../models/users.model.js"
-
+import { createHash } from '../utils/hashbcrypt.js';
 router.post("/", async (req, res)=> {
     const {first_name, last_name, email, password, age}= req.body
     try {
@@ -13,7 +13,7 @@ router.post("/", async (req, res)=> {
             first_name,
             last_name,
             email,
-            password,
+            password:createHash(password),
             age
         })
         req.session.user ={
@@ -21,7 +21,7 @@ router.post("/", async (req, res)=> {
             first_name: newUser.first_name}
 
     res.status(200).send("Usuario creado con ÉXITO")
-    res.render ('index')
+    res.redirect ('index')
         
     } catch (error) {
          res.status(500).send("Error al crear el usuario")
