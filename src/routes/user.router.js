@@ -1,12 +1,12 @@
 import express from 'express'
 const router = express.Router();
 import UserModel from '../models/users.model.js';
+const userModel= new UserModel
 import { createHash } from '../utils/hashbcrypt.js';
 router.post("/", async (req, res) => {
     const { first_name, last_name, email, password, age } = req.body
     try {
         const existUser = await UserModel.findOne({ email: email })
-        console.log(existUser)
         if (existUser) {
             return res.status(400).send("El correo ya está registrado")
         }
@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
             email: newUser.email,
             first_name: newUser.first_name
         }
-        req.session.user = true
+        req.session.login = true;
 
         res.redirect('/profile')
 

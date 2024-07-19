@@ -5,7 +5,6 @@ import { isValidPassword } from "../utils/hashbcrypt.js";
 
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
-
     try {
         const user = await UserModel.findOne({ email: email });
         if (user) {
@@ -19,7 +18,8 @@ router.post("/login", async (req, res) => {
             } else {
                 res.status(401).send("Contraseña no valida");
             }
-        } else {
+        }
+        else {
             res.status(404).send("Usuario no encontrado");
         }
 
