@@ -10,7 +10,7 @@ router.get("/register", (req, res) => {
 })
 router.get("/profile", (req, res) => {
     if (!req.session.login) {
-        return res.redirect("/login")
+        return res.redirect("/")
     }
     
     res.render("profile")

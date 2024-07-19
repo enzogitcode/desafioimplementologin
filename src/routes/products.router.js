@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router();
 import ProductsModel from "../models/products.model.js";
 
-router.get("/", async (req, res) => {
+router.get("/products", async (req, res) => {
     try {
         const products = await ProductsModel.find().lean()
         res.render('index', { products: products })
@@ -41,8 +41,6 @@ const {limit=10, page= 1, query, sort}= req.query
             nextLink: products.hasNextPage? `/products?limit=${limit}&page=${products.nextPage}&sort=${sort}&query=${query}`: null,
         })
 
-        console.log(products)
-        console.log(productsFinal)
     } catch (error) {
         res.status(500).json("Error en el servidor")
     }
@@ -76,7 +74,7 @@ router.put("/products/:pid", async (req, res) => {
     }
 })
 
-router.delete("products/:pid", async (req, res) => {
+router.delete("/products/:pid", async (req, res) => {
 
     let idProduct = req.params.pid
     try {
