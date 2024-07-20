@@ -22,6 +22,11 @@ const schema = new mongoose.Schema({
     age: {
         type: Number,
         required: true
+    },
+    role: {
+        type:String,
+        enum: ['admin', 'usuario'],
+        default: 'usuario'
     }
 })
 

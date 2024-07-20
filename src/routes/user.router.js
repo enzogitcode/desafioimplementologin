@@ -10,12 +10,15 @@ router.post("/", async (req, res) => {
         if (existUser) {
             return res.status(400).send("El correo ya está registrado")
         }
+        const role = email === 'adminCoder@coder.com' ? 'admin' : 'usuario';
+
         const newUser = await UserModel.create({
             first_name,
             last_name,
             email,
             password: createHash(password),
-            age
+            age,
+            role
         })
 
         req.session.login = true;
