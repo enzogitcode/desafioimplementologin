@@ -1,8 +1,15 @@
 <h1 class="text-center">Island</h1>
 <h2 class="text-center">Lista de productos</h2>
 
-<h3>Bienvenido {{newUser.first_name}}</h3>
-<h3> {{newUser.email}}</h3>
+{{#if user}}
+<header>
+    <p>Bienvenido!, {{user.first_name}} {{user.last_name}}!</p>
+    <p>Usuario: {{user.email}}</p>
+    <p>Rol: {{user.role}} </p>
+    <a href="/api/sessions/logout">Logout</a>
+</header>
+{{/if}}
+
 <div class="cardContainer container ">
     {{>card}}
 </div>

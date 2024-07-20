@@ -5,7 +5,7 @@ import ProductsModel from "../models/products.model.js";
 router.get("/products", async (req, res) => {
     try {
         const products = await ProductsModel.find().lean()
-        res.render('index', { products: products })
+        res.render('index', { products: products, user: req.session.user})
     } catch (error) {
         res.status(500).json("Error en el servidor")
     }
@@ -29,6 +29,7 @@ const {limit=10, page= 1, query, sort}= req.query
         })
         
         res.render("index", {
+            user: req.session.user,
             payload: productsFinal,
             products: productsFinal,
             hasPrevPage: products.hasPrevPage,
