@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router();
 import UserModel from '../models/users.model.js';
-const userModel= new UserModel
+const userModel = new UserModel
 import { createHash } from '../utils/hashbcrypt.js';
 router.post("/", async (req, res) => {
     const { first_name, last_name, email, password, age } = req.body
@@ -17,11 +17,9 @@ router.post("/", async (req, res) => {
             password: createHash(password),
             age
         })
-        req.session.user = {
-            email: newUser.email,
-            first_name: newUser.first_name
-        }
+
         req.session.login = true;
+        req.session.user = { ...newUser._doc };
 
         res.redirect('/profile')
 

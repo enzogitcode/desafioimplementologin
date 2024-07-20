@@ -1,6 +1,9 @@
 <h2>Ingresaste al Profile</h2>
 
-<p>Bienvenido {{user.email}}</p>
+{{#if user}}
+<p>Bienvenido {{user.first_name}} {{user.last_name}}</p>
+<p>Usuario {{user.email}}</p>
+{{/if}}
 
 <a href="/api/sessions/logout">Logout</a>
 <a href="/api/products">Ver productos</a>

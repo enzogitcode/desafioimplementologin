@@ -12,8 +12,8 @@ router.get("/profile", (req, res) => {
     if (!req.session.login) {
         return res.redirect("/")
     }
-    
-    res.render("profile")
+    res.render("profile", { user: req.session.user });
+
 })
 
 export default router;
