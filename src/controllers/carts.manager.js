@@ -81,7 +81,7 @@ class CartManager {
             throw error
         }
     }
-    async cleanCart (cartId) {
+    async clearCart (cartId) {
         try {
             const cart= await CartModel.findByIdAndUpdate(cartId, {products:[]}, {new: true} )
             if (!cart) {

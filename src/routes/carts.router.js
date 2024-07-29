@@ -96,10 +96,10 @@ cartRouter.delete("/api/carts/:cid/products/:pid", async (req, res) => {
 
 //Eliminar todos los productos del carrito seleccionado
 cartRouter.delete("/api/carts/:cid", async (req, res) => {
-    let cid = req.params.cid
+    let cartId = req.params.cid
     try {
-        const emptyCart = await cartManager.cleanCart(cid)
-        if (!cid) {
+        const emptyCart = await cartManager.clearCart(cartId)
+        if (!cartId) {
             res.json({ message: "No existe un carrito con ese id" })
         }
         await emptyCart.save();
