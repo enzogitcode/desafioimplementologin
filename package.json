@@ -9,7 +9,9 @@
     "mongoose": "^8.3.3",
     "mongoose-paginate-v2": "^1.8.0",
     "session-file-store": "^1.5.0",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   },
   "name": "desafioimplementologin",
   "version": "1.0.0",
