@@ -2,8 +2,9 @@ import express from "express";
 const router = express.Router();
 import UserModel from "../models/users.model.js";
 import { isValidPassword } from "../utils/hashbcrypt.js";
+import passport from "passport";
 
-router.post("/login", async (req, res) => {
+/* router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await UserModel.findOne({ email: email });
@@ -30,7 +31,7 @@ router.post("/login", async (req, res) => {
         console.log(error)
         res.status(400).send("Error en el Login");
     }
-})
+}) */
 
 router.get("/logout", (req, res) => {
     if (req.session.login) {
@@ -38,5 +39,22 @@ router.get("/logout", (req, res) => {
     }
     res.redirect("/");
 })
-
+//Versión para passport
+router.post("/login", passport.authenticate("login", { failureRedirect: "/api/sessions/faillogin" }), async (req, res) => {
+    if (!req.user) {
+        res.status(400).send("Credenciales Inválidas")
+    }
+    req.session.user = {
+        email: req.user.email,
+        age: req.user.age,
+        first_name: req.user.first_name,
+        last_name: req.user.last_name,
+        role: req.user.role
+    };
+    req.session.login = true
+    res.redirect("/profile");
+})
+router.get("/faillogin", async (req, res) => {
+    res.send("Error al ingresar en el login")
+})
 export default router; 

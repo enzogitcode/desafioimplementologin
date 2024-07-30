@@ -34,7 +34,7 @@ import passport from 'passport';
 }) */
 //Versión Passport (Desafío Refactor a nuestro Login)
 router.post("/", passport.authenticate("register", {
-    failureRedirect: "/filedregister"
+    failureRedirect: "/api/sessions/failedregister"
 }), async (req, res) => {
     if (!req.user) {
         return res.status(400).send("Credenciales inválidas")
@@ -44,11 +44,15 @@ router.post("/", passport.authenticate("register", {
         first_name: req.user.first_name,
         last_name: req.user.last_name,
         age: req.user.age,
-        email: req.user.email
+        email: req.user.email,
+        role: req.user.role
     };
     req.session.login = true;
     res.redirect("/profile")
 
-
 })
+router.get("/failedregister", (req, res) => {
+    res.send("Error al hacer el registro")
+})
+
 export default router;

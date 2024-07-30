@@ -3,7 +3,8 @@ import UserModel from '../models/users.model.js'
 
 import { createHash, isValidPassword } from '../utils/hashbcrypt.js'
 import { Strategy } from 'passport-local';
-const LocalStrategy = local.Strage;
+import local from 'passport-local'
+const LocalStrategy = local.Strategy
 
 const initializePassport = () => {
     passport.use("register", new Strategy({
@@ -14,11 +15,14 @@ const initializePassport = () => {
         try {
             let user = await UserModel.findOne({ email })
             if (user) {
-                return done(full, false)
+                return done(null, false)
             }
             let newUser = {
-                first_name, last_name, email, age, passport: createHash(password)
-
+                first_name, 
+                last_name, 
+                email, 
+                age, 
+                password: createHash(password)
             }
             let result = await UserModel.create(newUser)
             return done(null, result)
@@ -51,6 +55,5 @@ const initializePassport = () => {
         done(null, user)
     })
 }
-
 
 export default initializePassport

@@ -6,15 +6,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/public'))
 
-import passport from 'passport';
-import local from 'passport-local'
-
-import exphbs from 'express-handlebars'
-app.engine('handlebars', exphbs.engine());
-app.set('view engine', 'handlebars');
-app.set('views', './src/views');
-
-
 //cookie parser & session
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
@@ -28,6 +19,18 @@ app.use(session({
         mongoUrl: "mongodb+srv://coder:codercoder1@cluster0.j9ubv2z.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
     })
 }))
+//Passport-Local
+import passport from 'passport';
+import initializePassport from './config/passport.config.js';
+app.use(passport.initialize())
+app.use(passport.session())
+initializePassport();
+
+//Handlebars
+import exphbs from 'express-handlebars'
+app.engine('handlebars', exphbs.engine());
+app.set('view engine', 'handlebars');
+app.set('views', './src/views');
 
 //Rutas
 import usersRouter from "./routes/user.router.js"
@@ -52,3 +55,4 @@ app.get("/setcookie", (req, res) => {
 
 //Listen
 app.listen(PUERTO, () => { console.log(`Escuchando el puerto ${PUERTO}`) })
+
