@@ -57,4 +57,15 @@ router.post("/login", passport.authenticate("login", { failureRedirect: "/api/se
 router.get("/faillogin", async (req, res) => {
     res.send("Error al ingresar en el login")
 })
+//Github
+router.get("/github", passport.authenticate("github", { scope: ["user:email"] }), async (req, res) => { })
+
+router.get("/githubcallback", passport.authenticate("github", {
+    failureRedirect: "/login"
+}), async (req, res) => {
+    req.session.user = req.user; 
+    req.session.login = true; 
+    res.redirect("/profile");
+})
+
 export default router; 

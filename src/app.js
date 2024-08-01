@@ -6,6 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/public'))
 
+
 //cookie parser & session
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
